@@ -1,7 +1,15 @@
 from fastapi import FastAPI, Header, Request, Body
+from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 
 app = FastAPI(title="analytics")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],          # Do not use ["*"] for real apps with login/cookies
+    allow_methods=["GET", "POST", "PATCH", "DELETE"],
+    allow_headers=["Authorization", "Content-Type"],
+)
 
 def GetAnalyticsResult (payload):
     events = payload["events"]
