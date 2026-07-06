@@ -7,8 +7,9 @@ app = FastAPI(title="analytics")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],          # Do not use ["*"] for real apps with login/cookies
-    allow_methods=["GET", "POST", "PATCH", "DELETE"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"]
 )
 
 def GetAnalyticsResult (payload):
